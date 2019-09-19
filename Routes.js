@@ -1,32 +1,24 @@
-import {
-  createAppContainer, // takes navigator obj and creates a component out of it
-  createBottomTabNavigator,
-  createStackNavigator,
-  createSwitchNavigator,
-} from 'react-navigation';
+import { createAppContainer, createStackNavigator } from "react-navigation";
+import SearchScreen from "./src/screens/SearchScreen";
+import ResultsShowScreen from "./src/screens/ResultsShowScreen";
 
-//importing six files to be used
-import AccountScreen from './src/screens/AccountScreen';
-import SigninScreen from './src/screens/SigninScreeen';
-import SignupScreen from './src/screens/SignupScreen';
-import TrackCreateScreen from './src/screens/TrackCreateScreen';
-import TrackDetailScreen from './src/screens/TrackDetailScreen';
-import TrackListScreen from './src/screens/TrackListScreen';
+const navigator = createStackNavigator(
+  {
+    Search: SearchScreen,
+    ResultsShow: ResultsShowScreen
+  },
+  {
+    // this one is the configuration option
+    initialRouteName: "Search",
+    //options used for every different screen
+    //normally we customize the headers
+    defaultNavigationOptions: {
+      title: "Business Search"
+    }
+  }
+);
 
-//navigation
-const Routes = createSwitchNavigator({
-  loginFlow: createStackNavigator({
-    Signup: SignupScreen,
-    Signin: SigninScreen,
-  }),
-  mainFlow: createBottomTabNavigator({
-    trackListFlow: createStackNavigator({
-      TrackList: TrackListScreen,
-      TrackDetail: TrackDetailScreen,
-    }),
-    TrackCreate: TrackCreateScreen,
-    Account: AccountScreen,
-  }),
-});
+export default createAppContainer(navigator);
 
-export default createAppContainer(Routes);
+//anything we export from this file is taken by react native & shown on the screen
+//createAppContainer creates a default react component & the component includes whatever the navigator is provided
