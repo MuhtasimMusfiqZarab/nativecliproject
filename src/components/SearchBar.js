@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
-// import { FontAwesome } from "@expo/vector-icons";
+
+// import search from "react-native-vector-icons/FontAwesome";
+// import { FontAwesome } from "@react-native-vector-icons";
 
 const SearchScreen = ({ term, onTermChange, onTermSubmit }) => {
   return (
     <View style={styles.backgroundStyle}>
       {/* <FontAwesome name="search" style={styles.iconStyle} /> */}
+      {/* <search style={styles.iconStyle} /> */}
       {/* we are always going to track the input using state (must be in the parent) */}
       <TextInput
         style={styles.inputStyle}
